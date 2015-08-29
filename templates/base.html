@@ -50,25 +50,36 @@
       </header>
 	
 	  <div class="wrapper">
-
 		  <div role="main" class="content">
 		    {% block content %}{% endblock %}
 		  </div>	
 		  
 		  <div class="sidebar">
 		    <div class="sidebar-container" {% if PELICAN_SOBER_STICKY_SIDEBAR %}id="sidebar-container-fixed"{% endif %}>
-
+		    <nav>
+			<!--<h2>Projects</h2>
+                    
+		    {% for p in PROJECTS %}
+                        <a href="{{ p.url }}">{{ p.name }}</a><br/>
+			<i>{{ p.description }}</i><br/><br/>
+		    {% endfor %}
+			</nav> -->
 	          {% if PELICAN_SOBER_ABOUT %}
 	            <aside>
-	              <h2>About</h2>
-			      <p>
+	              <h2>About <img src="/theme/images/hat_icon.jpg" id="abouticon"/></h2>
+			<p>
                     {{ PELICAN_SOBER_ABOUT }}
 			      </p>
 			    </aside>
 			  {% endif %}
 
   	          <nav>
-	            <h2>Categories</h2>
+                    <h2>Publications</h2>
+                       {% for p in PUBLICATIONS %}
+                          <i>"<a href="{{ p.url }}">{{ p.name }}</a>"</i>, {{ p.authors }}<br/><br/>
+		    {% endfor %}
+
+	            <h2>Blog</h2>
 	            <ul>
 	              {% for cat, null in categories %}
 	                <li {% if cat == category %}class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
@@ -78,7 +89,7 @@
 
 	          {% if SOCIAL %}
 	            <aside>
-	            <h2>Social</h2>
+	            <h2>Contact</h2>
 			      <ul class="social">
 				    {% for name, link in SOCIAL %}
 				    <li><a href="{{ link }}">{{ name }}</a><i></i></li>
@@ -89,7 +100,7 @@
 
 	          {% if LINKS %}
 	            <aside>
-	              <h2>Blogroll</h2>
+	              <h2>Links</h2>
 	              <ul>
 	                {% for name, link in LINKS %}
 	                  <li><a href="{{ link }}">{{ name }}</a></li>
@@ -104,7 +115,7 @@
 
       <footer>
 		<p role="contentinfo">
-		  {{ AUTHOR }} - Proudly powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>. Theme <a href="https://github.com/fle/pelican-sober">pelican-sober</a>.
+		  (c) 2007 - 2015 {{ AUTHOR }} - All content licensed {{ SITE_LICENSE }} <span style="float: right;">Proudly powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>. Theme a (modified) version of <a href="https://github.com/fle/pelican-sober">pelican-sober</a>.</span>
     	</p>
 
 	  </footer>	
